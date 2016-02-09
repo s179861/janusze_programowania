@@ -1,0 +1,7 @@
+parameters:
+#    j_programowania_project.example.class: JProgramowania\ProjectBundle\Example
+
+services:
+#    j_programowania_project.example:
+#        class: %j_programowania_project.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

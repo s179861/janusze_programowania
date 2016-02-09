@@ -1,0 +1,4 @@
+j_programowania_project:
+    resource: "@JProgramowaniaProjectBundle/Resources/config/routing.yml"
+    prefix:   /
+

@@ -1,0 +1,5 @@
+j_programowania_project_homepage:
+    path: /hello/{name}
+    defaults:
+        _controller: JProgramowaniaProjectBundle:Default:index
+

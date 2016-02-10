@@ -3,3 +3,7 @@ j_programowania_project_homepage:
     defaults:
         _controller: JProgramowaniaProjectBundle:Default:index
 
+j_programowania_project_test:
+    path: /test
+    defaults:
+        _controller: JProgramowaniaProjectBundle:Default:test

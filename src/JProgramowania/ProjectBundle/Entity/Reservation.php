@@ -4,7 +4,7 @@
     use Doctrine\ORM\Mapping as ORM;
     
     /**
-     * @ORM\Entity
+     * @ORM\Entity(repositoryClass="JProgramowania\ProjectBundle\Entity\ReservationRepository")
      * @ORM\Table(name="reservations")
      */
     class Reservation

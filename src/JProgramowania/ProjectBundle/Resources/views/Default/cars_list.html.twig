@@ -1,0 +1,16 @@
+<h1>Oferta samochodów</h1>
+{% for car in cars %}
+Pojazd<br/>
+Id:{{ car.id }}<br/>
+Nazwa:{{ car.name }}<br/>
+Segment:{{ car.segment }}<br/>
+Cena:{{ car.price }}<br/>
+Ilość:{{ car.quantity }}<br/>
+Dostępność:
+{% if car.id in available_cars %}
+dostępny
+{% else %}
+nie dostępny
+{% endif %}
+<br/><br/>
+{% endfor %}

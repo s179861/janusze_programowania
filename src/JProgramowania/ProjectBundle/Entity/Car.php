@@ -5,7 +5,7 @@
     use Doctrine\Common\Collections\ArrayCollection;
     
     /**
-     * @ORM\Entity
+     * @ORM\Entity(repositoryClass="JProgramowania\ProjectBundle\Entity\CarRepository")
      * @ORM\Table(name="cars")
      */
     class Car

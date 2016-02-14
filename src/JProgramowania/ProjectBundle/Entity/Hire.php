@@ -4,7 +4,7 @@
     use Doctrine\ORM\Mapping as ORM;
     
     /**
-     * @ORM\Entity
+     * @ORM\Entity(repositoryClass="JProgramowania\ProjectBundle\Entity\HireRepository")
      * @ORM\Table(name="hires")
      */
     class Hire

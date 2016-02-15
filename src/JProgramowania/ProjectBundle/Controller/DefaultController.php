@@ -3,12 +3,15 @@
 namespace JProgramowania\ProjectBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 use \Datetime;
 
 use JProgramowania\ProjectBundle\Entity\Car;
 use JProgramowania\ProjectBundle\Entity\Reservation;
 use JProgramowania\ProjectBundle\Entity\Hire;
+
+use JProgramowania\ProjectBundle\Entity\TestUser;
 
 use JProgramowania\ProjectBundle\Components\AvailableCarFinder;
 
@@ -34,7 +37,7 @@ class DefaultController extends Controller
 		return $this->render('JProgramowaniaProjectBundle:Default:generowanie.html.twig');
 	}
 
-    public function testAction()
+    public function testAction(Request $request)
     {
         $values['value1'] = 1;
         $values['value2'] = 2;
@@ -46,12 +49,31 @@ class DefaultController extends Controller
         $values['value8'] = 8;
         $values['value9'] = 9;
         $values['value10'] = 10;
-
-        return $this->render('JProgramowaniaProjectBundle:Default:test.html.twig',
-            [
-                'values' => $values
-            ]
-        );
+		
+		$user = new TestUser();
+		
+		$form = $this->createFormBuilder($user)
+		->add('id','integer')
+		->add('pesel','text')
+		->add('datetime','datetime')
+		->add('tinteger','integer')
+		->add('tlong','number')
+		->add('Zapisz','submit')
+		->getForm();
+		
+		$form->handleRequest($request);
+		
+		if($form->isValid())
+		{
+			$values['value1'] = 'zwalidowany';
+			
+		}
+		return $this->render('JProgramowaniaProjectBundle:Default:test.html.twig',
+			[
+				'values' => $values,
+				'form' => $form->createView()
+			]
+		);
     }
 
     public function carsListAction()

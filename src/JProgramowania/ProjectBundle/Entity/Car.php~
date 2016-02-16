@@ -43,10 +43,10 @@
 
         public function __construct($name, $segment, $price, $quantity)
         {
-            $this->name = $name;
-            $this->segment = $segment;
-            $this->price = $price;
-            $this->quantity = $quantity;
+			$this->name = $name;
+			$this->segment = $segment;
+			$this->price = $price;
+			$this->quantity = $quantity;
             $this->reservations = new ArrayCollection();
             $this->hires = new ArrayCollection();
         }

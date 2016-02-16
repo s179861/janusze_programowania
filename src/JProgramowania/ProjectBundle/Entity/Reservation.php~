@@ -19,17 +19,28 @@
          * @ORM\Column(type="datetime")
          */
         private $end_date;
-        /**
+		/**
+         * @ORM\Column(name="is_active", type="boolean")
+         */
+		private $is_active;
+		/**
          * @ORM\ManyToOne(targetEntity="Car", inversedBy="reservation")
          * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
          */
         private $car;
+		/**
+         * @ORM\ManyToOne(targetEntity="User", inversedBy="reservation")
+         * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+         */
+        private $user;
 
-        public function __construct($start_date, $car)
+        public function __construct($start_date, $is_active, $car, $user)
         {
             $this->end_date = clone $start_date;
             $this->end_date = $this->end_date->modify('+3 minute');
+			$this->is_active = $is_active;
             $this->car = $car;
+			$this->user = $user;
         }
 
         public function getId()
@@ -56,4 +67,50 @@
         {
             $this->end_date = $end_date;
         }
+    
+    /**
+     * Set is_active
+     *
+     * @param boolean $isActive
+     * @return Reservation
+     */
+    public function setIsActive($isActive)
+    {
+        $this->is_active = $isActive;
+    
+        return $this;
     }
+
+    /**
+     * Get is_active
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->is_active;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \JProgramowania\ProjectBundle\Entity\User $user
+     * @return Reservation
+     */
+    public function setUser(\JProgramowania\ProjectBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \JProgramowania\ProjectBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}

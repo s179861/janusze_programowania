@@ -4,6 +4,7 @@ namespace JProgramowania\ProjectBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
   * @ORM\Entity
@@ -37,10 +38,23 @@ use Symfony\Component\Security\Core\User\UserInterface;
       * @ORM\Column(name="is_active", type="boolean")
       */
      private $isActive;
+	/**
+     * @ORM\OneToMany(targetEntity="Reservation", mappedBy="user")
+     */
+    private $reservations;
+    /**
+     * @ORM\OneToMany(targetEntity="Hire", mappedBy="user")
+     */
+    private $hires;
 
-     public function __construct()
+     public function __construct($username, $password, $email)
      {
-         $this->isActive = true;
+		$this->username = $username;
+        $this->setAndCodeBcryptPassword($password);
+        $this->email = $email;
+        $this->isActive = true;
+        $this->reservations = new ArrayCollection();
+        $this->hires = new ArrayCollection();
      }
 
      public function getUsername()
@@ -170,5 +184,71 @@ use Symfony\Component\Security\Core\User\UserInterface;
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Add reservations
+     *
+     * @param \JProgramowania\ProjectBundle\Entity\Reservation $reservations
+     * @return User
+     */
+    public function addReservation(\JProgramowania\ProjectBundle\Entity\Reservation $reservations)
+    {
+        $this->reservations[] = $reservations;
+    
+        return $this;
+    }
+
+    /**
+     * Remove reservations
+     *
+     * @param \JProgramowania\ProjectBundle\Entity\Reservation $reservations
+     */
+    public function removeReservation(\JProgramowania\ProjectBundle\Entity\Reservation $reservations)
+    {
+        $this->reservations->removeElement($reservations);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+
+    /**
+     * Add hires
+     *
+     * @param \JProgramowania\ProjectBundle\Entity\Hire $hires
+     * @return User
+     */
+    public function addHire(\JProgramowania\ProjectBundle\Entity\Hire $hires)
+    {
+        $this->hires[] = $hires;
+    
+        return $this;
+    }
+
+    /**
+     * Remove hires
+     *
+     * @param \JProgramowania\ProjectBundle\Entity\Hire $hires
+     */
+    public function removeHire(\JProgramowania\ProjectBundle\Entity\Hire $hires)
+    {
+        $this->hires->removeElement($hires);
+    }
+
+    /**
+     * Get hires
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHires()
+    {
+        return $this->hires;
     }
 }

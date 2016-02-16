@@ -14,6 +14,10 @@ use JProgramowania\ProjectBundle\Entity\Hire;
 use JProgramowania\ProjectBundle\Entity\User;
 
 use JProgramowania\ProjectBundle\Components\AvailableCarFinder;
+use JProgramowania\ProjectBundle\Components\LoginLogoutButtonGenerator;
+
+use JProgramowania\ProjectBundle\Form\LoginButtonForm;
+use JProgramowania\ProjectBundle\Form\LogoutButtonForm;
 
 //-----
 use JProgramowania\ProjectBundle\Components\DBDataGenerator;
@@ -50,9 +54,14 @@ class DefaultController extends Controller
         $values['value9'] = 9;
         $values['value10'] = 10;
 		
+		$loginlogout = LoginLogoutButtonGenerator::generateButton($this, new LoginButtonForm($this), new LogoutButtonForm($this));
+		$login_message = LoginLogoutButtonGenerator::generateMessage($this);
+		
 		return $this->render('JProgramowaniaProjectBundle:Default:test.html.twig',
 			[
-				'values' => $values
+				'values' => $values,
+				'login_logout_button' => $loginlogout->createView(),
+				'login_logout_message' => $login_message
 			]
 		);
     }

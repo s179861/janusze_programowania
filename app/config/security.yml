@@ -6,10 +6,13 @@ security:
             form_login:
                 login_path:  login
                 check_path:  login_check
+            logout:
+                path: /logout
+                target: /
             provider: our_db_provider
 
     access_control:
-        - { path: ^/test, roles: ROLE_USER }
+        #- { path: ^/test, roles: ROLE_USER }
 
     providers:
         our_db_provider:

@@ -2,3 +2,9 @@ j_programowania_project:
     resource: "@JProgramowaniaProjectBundle/Resources/config/routing.yml"
     prefix:   /
 
+login:
+    pattern: /login
+    defaults: { _controller: JProgramowaniaProjectBundle:Security:login }
+
+login_check:
+    pattern: /login_check

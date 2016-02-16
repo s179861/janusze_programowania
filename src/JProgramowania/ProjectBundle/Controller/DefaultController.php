@@ -11,7 +11,7 @@ use JProgramowania\ProjectBundle\Entity\Car;
 use JProgramowania\ProjectBundle\Entity\Reservation;
 use JProgramowania\ProjectBundle\Entity\Hire;
 
-use JProgramowania\ProjectBundle\Entity\TestUser;
+use JProgramowania\ProjectBundle\Entity\User;
 
 use JProgramowania\ProjectBundle\Components\AvailableCarFinder;
 
@@ -50,28 +50,9 @@ class DefaultController extends Controller
         $values['value9'] = 9;
         $values['value10'] = 10;
 		
-		$user = new TestUser();
-		
-		$form = $this->createFormBuilder($user)
-		->add('id','integer')
-		->add('pesel','text')
-		->add('datetime','datetime')
-		->add('tinteger','integer')
-		->add('tlong','number')
-		->add('Zapisz','submit')
-		->getForm();
-		
-		$form->handleRequest($request);
-		
-		if($form->isValid())
-		{
-			$values['value1'] = 'zwalidowany';
-			
-		}
 		return $this->render('JProgramowaniaProjectBundle:Default:test.html.twig',
 			[
-				'values' => $values,
-				'form' => $form->createView()
+				'values' => $values
 			]
 		);
     }

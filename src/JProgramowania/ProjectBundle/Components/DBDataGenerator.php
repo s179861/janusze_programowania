@@ -5,6 +5,7 @@ namespace JProgramowania\ProjectBundle\Components;
 use JProgramowania\ProjectBundle\Entity\Car;
 use JProgramowania\ProjectBundle\Entity\Hire;
 use JProgramowania\ProjectBundle\Entity\Reservation;
+use JProgramowania\ProjectBundle\Entity\User;
 
 class DBDataGenerator
 {
@@ -20,6 +21,10 @@ class DBDataGenerator
 		$reservation[0] = new Reservation($datetime, $car[0]);
 		$reservation[1] = new Reservation($datetime, $car[0]);
 		$reservation[2] = new Reservation($datetime, $car[1]);
+		
+		$user[0] = new User();
+		$user[1] = new User();
+		$user[2] = new User();
 		
 		$em->persist($car[0]);
 		$em->persist($car[1]);

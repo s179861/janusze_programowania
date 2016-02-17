@@ -10,7 +10,6 @@ use \Datetime;
 use JProgramowania\ProjectBundle\Entity\Car;
 use JProgramowania\ProjectBundle\Entity\Reservation;
 use JProgramowania\ProjectBundle\Entity\Hire;
-
 use JProgramowania\ProjectBundle\Entity\User;
 
 use JProgramowania\ProjectBundle\Components\AvailableCarFinder;
@@ -18,6 +17,7 @@ use JProgramowania\ProjectBundle\Components\LoginLogoutButtonGenerator;
 
 use JProgramowania\ProjectBundle\Form\LoginButtonForm;
 use JProgramowania\ProjectBundle\Form\LogoutButtonForm;
+use JProgramowania\ProjectBundle\Form\ReserveButtonForm;
 
 //-----
 use JProgramowania\ProjectBundle\Components\DBDataGenerator;
@@ -25,12 +25,7 @@ use JProgramowania\ProjectBundle\Components\DBDataGenerator;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
-    {
-        return $this->render('JProgramowaniaProjectBundle:Default:index.html.twig', array('name' => $name));
-    }
-	
-	public function initializeDBAction()
+    public function initializeDBAction()
 	{
 		$generator = new DBDataGenerator();
 		$em = $this->getDoctrine()->getManager();
@@ -57,11 +52,14 @@ class DefaultController extends Controller
 		$loginlogout = LoginLogoutButtonGenerator::generateButton($this, new LoginButtonForm($this), new LogoutButtonForm($this));
 		$login_message = LoginLogoutButtonGenerator::generateMessage($this);
 		
+		$reserve_button = $this->createForm(new ReserveButtonForm(1), array())->createView();
+		
 		return $this->render('JProgramowaniaProjectBundle:Default:test.html.twig',
 			[
 				'values' => $values,
 				'login_logout_button' => $loginlogout->createView(),
-				'login_logout_message' => $login_message
+				'login_logout_message' => $login_message,
+				'reserve_button' => $reserve_button
 			]
 		);
     }
@@ -76,9 +74,9 @@ class DefaultController extends Controller
         $repositories_array = $em->getRepository('JProgramowaniaProjectBundle:Reservation')->findActiveReservationsQuantity($datetime);
 
         $available_cars = AvailableCarFinder::getAvailableCarsIdList($cars_array, $hires_array, $repositories_array);
-
+		
         $cars = $em->getRepository('JProgramowaniaProjectBundle:Car')->findAll();
-
+		
         return $this->render('JProgramowaniaProjectBundle:Default:cars_list.html.twig',
             [
                 'cars' => $cars,
@@ -86,4 +84,34 @@ class DefaultController extends Controller
             ]
         );
     }
+	
+	public function doReservationAction(Request $request)
+	{
+		$values['value1'] = 1;
+        $values['value2'] = 2;
+        $values['value3'] = 3;
+        $values['value4'] = 4;
+        $values['value5'] = 5;
+        $values['value6'] = 6;
+        $values['value7'] = 7;
+        $values['value8'] = 8;
+        $values['value9'] = 9;
+        $values['value10'] = 10;
+		
+		$form = $this->createForm(new ReserveButtonForm(0), array());
+		if ($request->isMethod('POST')) {
+            $form->bind($request);
+            $data = $form->getData();
+			$values['value10'] = $data['car_id'];
+        }
+		
+		return $this->render('JProgramowaniaProjectBundle:Default:test.html.twig',
+			[
+				'values' => $values,
+				'login_logout_button' => $reserve_button = $this->createForm(new ReserveButtonForm(1), array())->createView(),
+				'login_logout_message' => "",
+				'reserve_button' => $reserve_button = $this->createForm(new ReserveButtonForm(1), array())->createView()
+			]
+		);
+	}
 }

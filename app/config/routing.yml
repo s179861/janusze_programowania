@@ -4,7 +4,8 @@ j_programowania_project:
 
 login:
     pattern: /login
-    defaults: { _controller: JProgramowaniaProjectBundle:Security:login }
+    defaults:
+        _controller: JProgramowaniaProjectBundle:Security:login
 
 login_check:
     pattern: /login_check

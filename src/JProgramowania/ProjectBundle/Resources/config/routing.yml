@@ -1,8 +1,3 @@
-j_programowania_project_homepage:
-    path: /hello/{name}
-    defaults:
-        _controller: JProgramowaniaProjectBundle:Default:index
-
 j_programowania_project_test:
     path: /test
     defaults:
@@ -17,3 +12,8 @@ j_programowania_project_generator:
     path: /generator
     defaults:
         _controller: JProgramowaniaProjectBundle:Default:initializeDB
+
+j_programowania_project_reservation:
+    path: /zrob rezerwacje
+    defaults:
+        _controller: JProgramowaniaProjectBundle:Default:doReservation

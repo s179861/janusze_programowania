@@ -23,6 +23,10 @@
          * @ORM\Column(type="datetime")
          */
         private $end_date;
+		/**
+         * @ORM\Column(type="decimal", scale=2)
+         */
+        private $price;
         /**
          * @ORM\ManyToOne(targetEntity="Car", inversedBy="hire")
          * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
@@ -34,12 +38,11 @@
          */
         private $user;
 
-        public function __construct($start_date, $days, $car, $user)
+        public function __construct($start_date, $end_date, $price, $car, $user)
         {
             $this->start_date = $start_date;
-            $text_value = '+'.$days.' day';
-            $this->end_date = clone $start_date;
-            $this->end_date = $this->end_date->modify($text_value);
+            $this->end_date = $end_date;
+			$this->price = $price;
             $this->car = $car;
 			$this->user = $user;
         }
@@ -100,5 +103,28 @@
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     * @return Hire
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string 
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 }

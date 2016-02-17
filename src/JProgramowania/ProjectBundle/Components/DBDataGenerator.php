@@ -18,9 +18,9 @@ class DBDataGenerator
 		$user[1] = new User('klient2','klient2','klient2@klient.com');
 		$user[2] = new User('klient3','klient3','klient3@klient.com');
 		
-		$hire[0] = new Hire($datetime, 7, $car[0], $user[0]);
-		$hire[1] = new Hire($datetime, 7, $car[1], $user[1]);
-		$hire[2] = new Hire($datetime, 7, $car[0], $user[2]);
+		$hire[0] = new Hire($datetime, 100.00, 7, $car[0], $user[0]);
+		$hire[1] = new Hire($datetime, 200.00, 7, $car[1], $user[1]);
+		$hire[2] = new Hire($datetime, 300.00, 7, $car[0], $user[2]);
 		
 		$reservation[0] = new Reservation($datetime, 1, $car[0], $user[0]);
 		$reservation[1] = new Reservation($datetime, 1, $car[0], $user[2]);

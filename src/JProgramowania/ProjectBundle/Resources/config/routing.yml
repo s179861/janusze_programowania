@@ -13,7 +13,32 @@ j_programowania_project_generator:
     defaults:
         _controller: JProgramowaniaProjectBundle:Default:initializeDB
 
-j_programowania_project_reservation:
-    path: /zrob rezerwacje
+j_programowania_project_do_reservation:
+    path: /moje konto/zrob rezerwacje
     defaults:
         _controller: JProgramowaniaProjectBundle:Default:doReservation
+
+j_programowania_project_my_reservations:
+    path: /moje konto/moje rezerwacje
+    defaults:
+        _controller: JProgramowaniaProjectBundle:Default:myReservations
+
+j_programowania_project_do_hire:
+    path: /moje konto/wyporzycz
+    defaults:
+        _controller: JProgramowaniaProjectBundle:Default:doHire
+
+j_programowania_project_my_hires:
+    path: /moje konto/moje wyporzyczenia
+    defaults:
+        _controller: JProgramowaniaProjectBundle:Default:myHires
+
+j_programowania_project_confirm_hire:
+    path: /moje konto/potwierdz wyporzyczenie
+    defaults:
+        _controller: JProgramowaniaProjectBundle:Default:confirmHire
+
+j_programowania_project_start_dotpay:
+    path: /moje konto/start dotpay
+    defaults:
+        _controller: JProgramowaniaProjectBundle:Default:startDotpay

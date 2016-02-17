@@ -16,10 +16,9 @@ class ReserveButtonForm extends AbstractType
 	
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->setAction('zrob rezerwacje');
+        $builder->setAction('moje konto/zrob rezerwacje');
         $builder->add('Zarezerwuj','submit');
-		$builder->add('car_id', 'hidden', array(
-        'data' => $this->car_id));
+		$builder->add('car_id', 'hidden', array('data' => $this->car_id));
     }
 
     public function getName()

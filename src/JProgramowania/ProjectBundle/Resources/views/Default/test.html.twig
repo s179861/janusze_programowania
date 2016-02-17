@@ -1,3 +1,8 @@
+{{ login_logout_message }}{{ form(login_logout_button) }}
+{% if zalogowany == 1 %}
+<a href="moje konto/moje rezerwacje">Moje rezerwacje</a>
+<a href="moje konto/moje wyporzyczenia">Moje wyporzyczenia</a>
+{% endif %}
 <h1>Strona testowa</h1>
 Wartość 1: {{ values.value1 }}<br/>
 Wartość 2: {{ values.value2 }}<br/>
@@ -10,4 +15,3 @@ Wartość 8: {{ values.value8 }}<br/>
 Wartość 9: {{ values.value9 }}<br/>
 Wartość 10: {{ values.value10 }}<br/>
 <br/>
-{{ login_logout_message }}{{ form(login_logout_button) }}{{ form(reserve_button) }}

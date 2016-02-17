@@ -12,7 +12,7 @@ security:
             provider: our_db_provider
 
     access_control:
-        - { path: ^/klient, roles: ROLE_USER }
+        - { path: ^/moje konto, roles: ROLE_USER }
 
     providers:
         our_db_provider:

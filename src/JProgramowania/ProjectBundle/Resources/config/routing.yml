@@ -3,11 +3,6 @@ j_programowania_project_main:
     defaults:
         _controller: JProgramowaniaProjectBundle:Default:mainPage
 
-j_programowania_project_test:
-    path: /test
-    defaults:
-        _controller: JProgramowaniaProjectBundle:Default:test
-
 j_programowania_project_cars_list:
     path: /oferta
     defaults:

@@ -1,3 +1,8 @@
+j_programowania_project_main:
+    path: /
+    defaults:
+        _controller: JProgramowaniaProjectBundle:Default:mainPage
+
 j_programowania_project_test:
     path: /test
     defaults:

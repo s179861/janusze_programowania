@@ -78,6 +78,29 @@ class DefaultController extends Controller
 			]
 		);
     }
+	
+	public function mainPageAction()
+	{
+		$user = $this->get('security.context')->getToken()->getUser();
+		if($user != 'anon.')
+		{
+			$zalogowany = 1;
+		}
+		else
+		{
+			$zalogowany = 0;
+		}
+		$loginlogout = LoginLogoutButtonGenerator::generateButton($this, new LoginButtonForm($this), new LogoutButtonForm($this));
+		$login_message = LoginLogoutButtonGenerator::generateMessage($this);
+		
+		return $this->render('JProgramowaniaProjectBundle:Default:main_page.html.twig',
+			[
+				'login_logout_button' => $loginlogout->createView(),
+				'login_logout_message' => $login_message,
+				'zalogowany' => $zalogowany
+			]
+		);
+	}
 
     public function carsListAction()
     {
@@ -318,6 +341,13 @@ class DefaultController extends Controller
 			$end_date = $data['end_date'];
 			$price = $data['price'];
         }
+		
+		$user = $this->get('security.context')->getToken()->getUser();
+		$user_id = $user->getId();
+		$user_login = $user->getUsername();
+		$user_firstname = $user->getFirstname();
+		$user_lastname = $user->getLastname();
+		$user_email = $user->getEmail();
 		
 		$response = $this->forward('JProgramowaniaProjectBundle:Default:confirmHire', array(
         'car_id'  => $car_id,

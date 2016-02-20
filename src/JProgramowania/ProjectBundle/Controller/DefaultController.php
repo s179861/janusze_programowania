@@ -310,7 +310,7 @@ class DefaultController extends Controller
         $user_lastname = $user->getLastname();
         $user_email = $user->getEmail();
 
-        $response = $this->forward('JProgramowaniaProjectBundle:Default:confirmHire', array(
+        $response = $this->forward('JProgramowaniaProjectBundle:Default:performDotpayPayment', array(
         'car_id'  => $car_id,
         'reservation_id'  => $reservation_id,
         'user_id' => $user_id,

@@ -353,7 +353,14 @@ class DefaultController extends Controller
 			return new RedirectResponse($url);
 	}
 
+    public function confirmAction(Request $request)
+    {
 
+	$logger = $this->get('logger');
+	$logger->notice('URLC DOTPAY --------------------------------'.var_export($request->request, true));
+	
+	return new Response('OK');
+	}
 
 
 

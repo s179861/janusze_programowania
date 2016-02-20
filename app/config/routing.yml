@@ -12,3 +12,18 @@ login_check:
 
 logout:
     path: /logout
+
+start_dotpay:
+    path: /start/dotpay
+    defaults:
+        _controller: JProgramowaniaProjectBundle:Default:startDotpay 
+
+perfom_dotpay_payment:
+    path: /perform/dotpay/payment
+    defaults:
+        _controller: JProgramowaniaProjectBundle:Default:performDotpayPayment 
+
+confirm_payment:
+    path: /confirm/payment
+    defaults:
+        _controller: JProgramowaniaProjectBundle:Default:confirm

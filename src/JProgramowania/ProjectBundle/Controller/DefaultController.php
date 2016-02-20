@@ -322,6 +322,41 @@ class DefaultController extends Controller
         return $response;
     }
 
+    
+    	public function performDotpayPaymentAction($car_id, $reservation_id, $user_id, $start_date, $end_date, $price)
+	{
+	$user = $this->get('security.context')->getToken()->getUser();
+        $user_login = $user->getUsername();
+        $user_firstname = $user->getFirstname();
+        $user_lastname = $user->getLastname();
+        $user_email = $user->getEmail();
+
+	$car = $this->getDoctrine()->getRepository('JProgramowaniaProjectBundle:Car')->find($car_id);
+        $data_array['car'] = $car;
+	$price = $car->getPrice();
+		
+	$danePlatnosci = array(
+		'id' => '789130',
+		'amount' => $price,	
+		'description' => 'Oplata za wypozyczenie auta o identyfikatorze: '. $car_id. '. Numer rezerwacji: '. $reservation_id,
+		'firstname' => $user_firstname,
+		'lastname' => $user_lastname, 
+		'email' => $user_email,
+		'control' => '123',
+		);	
+
+		$url = sprintf(
+			'%s/?%s',
+			'https://ssl.dotpay.pl/test_payment/',
+			http_build_query($danePlatnosci)
+		);
+			return new RedirectResponse($url);
+	}
+
+
+
+
+
     public function confirmHireAction($car_id, $reservation_id, $user_id, $start_date, $end_date, $price)
     {
         $em = $this->getDoctrine()->getManager();

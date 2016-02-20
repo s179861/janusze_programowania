@@ -392,7 +392,7 @@ class DefaultController extends Controller
         $url = 'https://mandrillapp.com/api/1.0/messages/send.json';
         $params = [
             'message' => array(
-                'subject' => 'Wypożyczenie samochodu',
+                'subject' => 'Wypożyczalnia Januszy',
                 'text' => $mail_tresc,
                 'html' => '<p>'.$mail_tresc.'</p>',
                 'from_email' => 'wyporzyczalnia@wyporzyczalnia.com',

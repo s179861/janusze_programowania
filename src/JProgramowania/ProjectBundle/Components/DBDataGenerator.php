@@ -18,9 +18,9 @@ class DBDataGenerator
         $car[4] = new Car('Kia', 'E', 500.00, 2);
         $car[5] = new Car('Peugeot', 'F', 1000.00, 1);
 
-        $user[0] = new User('klient1','klient1','klient1@klient.com', 'Adam', 'Adamski');
-        $user[1] = new User('klient2','klient2','klient2@klient.com', 'Anna', 'Annowska');
-        $user[2] = new User('klient3','klient3','klient3@klient.com', 'Andrzej', 'Andrzejny');
+        $user[0] = new User('klient1','klient1','mati1251@gmail.com', 'Mateusz', 'Galant');
+        $user[1] = new User('klient2','klient2','buczekmj@gmail.com', 'Michal', 'Buczek');
+        $user[2] = new User('klient3','klient3','celary.r@gmail.com', 'Radoslaw', 'Celary');
 
         $em->persist($car[0]);
         $em->persist($car[1]);

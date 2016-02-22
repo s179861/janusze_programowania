@@ -336,7 +336,7 @@ class DefaultController extends Controller
 	
 		
 	$danePlatnosci = array(
-		'id' => '789130',
+		'id' => $this->container->getParameter('dotpay_id'),
 		'amount' => $price,	
 		'description' => 'Oplata za wypozyczenie auta o identyfikatorze: '. $car_id. '. Numer rezerwacji: '. $reservation_id,
 		'firstname' => $user_firstname,

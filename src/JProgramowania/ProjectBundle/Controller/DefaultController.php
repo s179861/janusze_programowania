@@ -357,35 +357,27 @@ class DefaultController extends Controller
 
     public function confirmAction(Request $request)
     {
+		$dotpay_control = explode(';', $_POST['control']);
 
-	$logger = $this->get('logger');
-	$logger->notice('URLC DOTPAY --------------------------------'.var_export($request->request, true));
-	
-	return new Response('OK');
-	}
-
-
-
-    public function confirmHireAction($car_id, $reservation_id, $user_id, $start_date, $end_date, $price)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('JProgramowaniaProjectBundle:User')->find($user_id);
-        $car = $em->getRepository('JProgramowaniaProjectBundle:Car')->find($car_id);
-        $reservation = $em->getRepository('JProgramowaniaProjectBundle:Reservation')->find($reservation_id);
+		$em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('JProgramowaniaProjectBundle:User')->find($dotpay_control[0]);
+        $car = $em->getRepository('JProgramowaniaProjectBundle:Car')->find($dotpay_control[1]);
+        $reservation = $em->getRepository('JProgramowaniaProjectBundle:Reservation')->find($dotpay_control[2]);
         
-        if ($reservation) {
+        if ($reservation) 
+		{
             $reservation->setIsActive(0);
         }
         $em->persist($reservation);
 
-        $hire = new Hire(new Datetime($start_date), new Datetime($end_date), $price, $car, $user);
+        $hire = new Hire(new Datetime($dotpay_control[3]), new Datetime($dotpay_control[4]), $dotpay_control[5], $car, $user);
 
         $em->persist($hire);
 
         $em->flush();
 
         $mail_tresc = 'Dzień dobry, dokonano transakcji.<br/>';
-        $mail_tresc .= 'Wyporzyczenie samochodu.<br/>';
+        $mail_tresc .= 'Wypożyczenie samochodu z Wypożyczalni Januszy.<br/>';
         $mail_tresc .= 'Marka: '.$car->getName().'<br/>';
         $mail_tresc .= 'Data rozpoczęcia: '.$hire->getStartDate()->format('Y-m-d H:i:s').'<br/>';
         $mail_tresc .= 'Data zakończenia: '.$hire->getEndDate()->format('Y-m-d H:i:s').'<br/>';
@@ -394,10 +386,10 @@ class DefaultController extends Controller
         $url = 'https://mandrillapp.com/api/1.0/messages/send.json';
         $params = [
             'message' => array(
-                'subject' => 'Wypożyczalnia Januszy',
+                'subject' => 'Wypożyczalnia Januszy - wypożyczenie samochodu',
                 'text' => $mail_tresc,
                 'html' => '<p>'.$mail_tresc.'</p>',
-                'from_email' => 'wyporzyczalnia@wyporzyczalnia.com',
+                'from_email' => 'wypozyczalnia@wypozyczalnia.com',
                 'to' => array(
                     array(
                         'email' => $user->getEmail(),
@@ -417,6 +409,7 @@ class DefaultController extends Controller
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
         curl_close($ch); 
 
-        return new RedirectResponse('../oferta');
-    }
+
+	return new Response('OK');
+	}
 }

@@ -323,7 +323,7 @@ class DefaultController extends Controller
     }
 
     
-    	public function performDotpayPaymentAction($car_id, $reservation_id, $user_id, $start_date, $end_date, $price)
+    public function performDotpayPaymentAction($car_id, $reservation_id, $user_id, $start_date, $end_date, $price)
 	{
 	$user = $this->get('security.context')->getToken()->getUser();
         $user_login = $user->getUsername();
@@ -332,8 +332,8 @@ class DefaultController extends Controller
         $user_email = $user->getEmail();
 
 	$car = $this->getDoctrine()->getRepository('JProgramowaniaProjectBundle:Car')->find($car_id);
-        $data_array['car'] = $car;
-	$price = $car->getPrice();
+    $data_array['car'] = $car;
+	
 		
 	$danePlatnosci = array(
 		'id' => '789130',
@@ -342,7 +342,9 @@ class DefaultController extends Controller
 		'firstname' => $user_firstname,
 		'lastname' => $user_lastname, 
 		'email' => $user_email,
-		'control' => '123',
+		'control' => $user_id.';'.$car_id.';'.$reservation_id.';'.$start_date.';'.$end_date.';'.$price,
+		'type' => 1,
+		'api_version' => 'dev',
 		);	
 
 		$url = sprintf(

@@ -1,0 +1,15 @@
+{{ login_logout_message }}{{ form(login_logout_button) }}
+{% if zalogowany == 1 %}
+<a href="moje rezerwacje">Moje rezerwacje</a>
+{% endif %}
+<a href="../oferta">Oferta</a>
+<h1>Moje wyporzyczenia</h1>
+{% for hire in hires %}
+Rezerwacja
+Id: {{ hire.id }}<br/>
+Data rozpoczęcia: {{ hire.startDate|date("Y-m-d H:i:s") }}<br/>
+Data zakończenia: {{ hire.endDate|date("Y-m-d H:i:s") }}<br/>
+Cena: {{ hire.price }}<br/>
+Nazwa auta: {{ hire.car.name }}
+<br/><br/>
+{% endfor %}

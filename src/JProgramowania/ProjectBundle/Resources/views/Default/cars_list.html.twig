@@ -1,0 +1,21 @@
+
+{{ login_logout_message }}{{ form(login_logout_button) }}
+{% if zalogowany == 1 %}
+<a href="moje konto/moje rezerwacje">Moje rezerwacje</a>
+<a href="moje konto/moje wyporzyczenia">Moje wypozyczenia</a>
+{% endif %}
+<h1>Oferta samochodów</h1>
+{% for car in cars %}
+Pojazd<br/>
+Id:{{ car.car.id }}<br/>
+Nazwa:{{ car.car.name }}<br/>
+Segment:{{ car.car.segment }}<br/>
+Cena:{{ car.car.price }}<br/>
+Ilość:{{ car.car.quantity }}<br/>
+{% if car.car.id in available_cars %}
+{{ form(car.avaliablity) }}
+{% else %}
+{{ car.avaliablity }}
+{% endif %}
+<br/><br/>
+{% endfor %}

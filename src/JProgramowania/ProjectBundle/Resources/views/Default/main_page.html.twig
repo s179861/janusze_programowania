@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/ie10-viewport-bug-workaround.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('carousel.css') }}"/>
+    
+    
+{% endblock %}
+
+
+{# ... #}
+
+<script src="{{ asset('ie-emulation-modes-warning.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/holder.min.js') }}"></script>
+<script src="{{ asset('assets/js/ie10-viewport-bug-workaround.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/jquery.min.js') }}"></script>
+
+
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Wypożyczalnia samochodów</title>
+
+    <!-- Bootstrap core CSS -->
+  
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+   
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#ofirmie">Wypożyczalnia samochodów</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Strona domowa</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Wypożyczalnia</li>
+                    <li><a href="#oferta">Oferta</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#rabaty">Rabaty</a></li>
+                    <li><a href="#rezerwacja">Rezerwacja</a></li>
+                    <li><a href="#cennik">Cennik</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav">
+                {{ login_logout_message }}{{ form(login_logout_button) }}
+              </ul>
+                {% if zalogowany == 1 %}
+                  <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu zalogowanego użytkownika <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="moje konto/moje rezerwacje">Moje rezerwacje</a></li>
+                        <li><a href="moje konto/moje wyporzyczenia">Moje wypożyczenia</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                {% endif %}
+          </div>    
+        </nav>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div align="center">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox" align="center">
+        <div class="item active" align="center">
+          <img class="first-slide" src="{{ asset('pictures/duzoAutek.gif') }}"  alt="First slide" height="42" width="42">
+          <div class="container" align="center">
+            <div class="carousel-caption">
+              <h1>Wypożycz swoje wymarzone auto już dziś</h1>
+              <p>Mamy dostępne auta ze wszystkich segmentów, każdej klasy i na każdą kieszeń! Przejrzyj naszą bogatą ofertę samochodów.</p>
+              <p><a class="btn btn-lg btn-primary" href="#oferta" role="button">Oferta</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="second-slide" src="{{ asset('pictures/nawodzie.gif') }}" alt="Second slide" height="42" width="42">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>RABATY!</h1>
+              <p>Sprawdź jaki rabat przysługuje Ci przy wypożyczaniu samochodu U NAS!</p>
+              <p><a class="btn btn-lg btn-primary" href="#rabaty" role="button">Rabaty</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="third-slide" src="{{ asset('pictures/pchanko.gif') }}" alt="Third slide" height="42" width="42">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Nasze auta</h1>
+              <p>Zobacz galerię naszych aut.</p>
+              <p><a class="btn btn-lg btn-primary" href="#galeria" role="button">Galeria</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+  </div>
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+
+        <div class="col-lg-4">
+
+          <img class="img-circle" src="{{ asset('pictures/jedzie2.gif') }}"  alt="Generic placeholder image" width="140" height="140">
+          <h2>Najniższe ceny</h2>
+          <p>Taniej to już być nie może, ledwo na tym zarabiamy!</p>
+         <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="{{ asset('pictures/jedzie.gif') }}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Najlepsze auta</h2>
+          <p>Bezawaryjne, wygonde, luksusowe i szybkie. Czego można więcej chcieć od samochodu? Chesz, żeby auto miało lodówkę, gotowało obiad lub sprzątało w domu? Wszystko jest to ugadania :).</p>
+          <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="{{ asset('pictures/jedzie3.gif') }}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Twój najlepszy wybór</h2>
+          <p>Zaufaj naszej firmie! Wypożycz u nas auto a gwarantujemy zadowolenie, w przeciwnym wypadku zwrot hajsu (albo i nie).</p>
+          <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->
+      <a name="oferta"></a>
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+
+          <h2 class="featurette-heading">Nasza oferta. <span class="text-muted">Jak spełniamy wymagania klienta?</span></h2>
+          
+          <p class="lead">Jesteśmy doświadczoną firmą programistyczną przejmującą stopniowo branżę wypożyczania samochodów. Nasi klienci spotkają się u nas z gościnnością, dobrym traktowaniem, niskimi cenami, wysokimi rabatami, ofertami extra oraz świetnymi samochodami. </p><br><br>
+
+          <p><a class="btn btn-default" href="oferta" role="button">Dostępne auta</a></p>
+
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" src="{{ asset('pictures/1.gif') }}" alt="Generic placeholder image">
+        </div>
+      </div>
+      <a name="galeria"></a>
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Galeria naszych autek <span class="text-muted">Zobacz co mamy do zaoferowania.</span></h2>
+          <p class="lead"> 
+            <a href="#"> Jeszcze niegotowa! Zajrzyj później!</a>
+          </p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" src="{{ asset('pictures/beemka.gif') }}" alt="Generic placeholder image">
+        </div>
+      </div>
+      <a name="rabaty"></a>
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Rabaty. <span class="text-muted">Jak możesz zaoszczędzić?</span></h2>
+          <p class="lead">Klientowi przysługuje rabat w wysokości 20% jeżeli dokonał 3 lub więcej wypożyczeń w ostatnim miesiącu. Klientowi przysługuje rabat w wysokości 10% jeżeli liczba dni wypożyczenia przekracza 1 tydzień. Rabaty nie łączą się.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" src="{{ asset('pictures/savemoney.gif') }}" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2016, Michał Buczek, Radosław Celary, Mateusz Galant. &middot; </p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/holder.min.js') }}"></script>
+<script src="{{ asset('assets/js/ie10-viewport-bug-workaround.js') }}"></script>
+<script src="{{ asset('assets/js/vendor/jquery.min.js') }}"></script>
+  </body>
+</html>

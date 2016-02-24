@@ -1,0 +1,25 @@
+{{ login_logout_message }}{{ form(login_logout_button) }}
+{% if zalogowany == 1 %}
+<a href="moje wyporzyczenia">Moje wyporzyczenia</a>
+{% endif %}
+<a href="../oferta">Oferta</a>
+<h1>Moje rezerwacje</h1>
+{% for reservation in reservations %}
+{% if reservation is not empty %}
+Rezerwacja
+Id: {{ reservation.reservation.id }}<br/>
+Data zakończenia: {{ reservation.reservation.endDate|date("Y-m-d H:i:s") }}<br/>
+Nazwa auta: {{ reservation.car.name }}<br/>
+Status:
+{% if reservation.reservation.isActive == 0 %}
+Potwierdzono
+{% elseif reservation.reservation.endDate < date()%}
+Nie potwierdzono
+{% else %}
+Czeka na potwierdzenie
+{{ form(reservation.hire_form) }}
+{% endif %}
+<br/><br/>
+{% endif %}
+{% endfor %}
+<body bgcolor="black" text="white">

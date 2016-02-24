@@ -25,3 +25,7 @@ class LoginButtonForm extends AbstractType
         return 'login';
     }
 }
+
+?>
+
+<body bgcolor="black" text="white">

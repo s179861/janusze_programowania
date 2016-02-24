@@ -1,0 +1,13 @@
+{{ login_logout_message }}{{ form(login_logout_button) }}
+{% if zalogowany == 1 %}
+<a href="moje rezerwacje">Moje rezerwacje</a>
+<a href="moje wyporzyczenia">Moje wyporzyczenia</a>
+{% endif %}
+<a href="../oferta">Oferta</a>
+<h1>Potwierdzenie wyporzyczenia</h1>
+Marka samochodu: {{ car.name }}<br/>
+Data rozpoczęcia:{{ start_date }}<br/>
+Data zakończenia:{{ end_date }}<br/>
+Ilość dni:{{ days_quantity }}<br/>
+Cena:{{ price }}<br/>
+{{ form(confirm_button) }}

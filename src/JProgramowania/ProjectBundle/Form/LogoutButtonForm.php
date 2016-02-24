@@ -25,3 +25,5 @@ class LogoutButtonForm extends AbstractType
         return 'logout';
     }
 }
+?>
+<body bgcolor="black" text="white">

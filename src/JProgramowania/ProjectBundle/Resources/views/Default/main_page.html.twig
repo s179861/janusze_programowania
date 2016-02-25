@@ -200,10 +200,10 @@
 
           <h2 class="featurette-heading">Nasza oferta. <span class="text-muted">Jak spełniamy wymagania klienta?</span></h2>
           
-          <p class="lead">Jesteśmy doświadczoną firmą programistyczną przejmującą stopniowo branżę wypożyczania samochodów. Nasi klienci spotkają się u nas z gościnnością, dobrym traktowaniem, niskimi cenami, wysokimi rabatami, ofertami extra oraz świetnymi samochodami. </p><br><br>
-
+          <p class="lead">Jesteśmy doświadczoną firmą programistyczną przejmującą stopniowo branżę wypożyczania samochodów. Nasi klienci spotkają się u nas z gościnnością, dobrym traktowaniem, niskimi cenami, wysokimi rabatami, ofertami extra oraz świetnymi samochodami. Zaloguj się by zobaczyć naszą ofertę. Zaloguj się by sprawdzić dostępne auta </p><br><br>
+          {% if zalogowany == 1 %}
           <p><a class="btn btn-default" href="oferta" role="button">Dostępne auta</a></p>
-
+          {% endif %}
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-responsive center-block" src="{{ asset('pictures/1.gif') }}" alt="Generic placeholder image">

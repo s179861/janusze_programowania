@@ -1,6 +1,11 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/ie10-viewport-bug-workaround.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('carousel.css') }}"/>
+{% endblock %}
 {{ login_logout_message }}{{ form(login_logout_button) }}
 {% if zalogowany == 1 %}
-<a href="moje wyporzyczenia">Moje wyporzyczenia</a>
+<a href="moje wyporzyczenia">Moje wypożyczenia</a>
 {% endif %}
 <a href="../oferta">Oferta</a>
 <h1>Moje rezerwacje</h1>
@@ -22,4 +27,3 @@ Czeka na potwierdzenie
 <br/><br/>
 {% endif %}
 {% endfor %}
-<body bgcolor="black" text="white">

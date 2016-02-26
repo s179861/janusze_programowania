@@ -1,9 +1,16 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/ie10-viewport-bug-workaround.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('carousel.css') }}"/>
+{% endblock %}
 {{ login_logout_message }}{{ form(login_logout_button) }}
 {% if zalogowany == 1 %}
+
 <a href="moje rezerwacje">Moje rezerwacje</a>
 {% endif %}
 <a href="../oferta">Oferta</a>
-<h1>Moje wyporzyczenia</h1>
+<h1>Moje wypożyczenia</h1>
+<p class="lead">Historia wypożyczonych aut</p>
 {% for hire in hires %}
 Rezerwacja
 Id: {{ hire.id }}<br/>

@@ -1,3 +1,24 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/ie10-viewport-bug-workaround.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('carousel.css') }}"/>
+{% endblock %}
+<html>
+    <head>
+    </head>
+    <body>
+    <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Wypożyczalnia Januszy! <span class="text-muted">Ekran logowania</span></h2>
+          <p class="lead">Zaloguj się by uzyskać dostęp do rezerwacji.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" src="{{ asset('pictures/1.gif') }}" alt="Generic placeholder image">
+        </div>
+      </div>
+      </body>
+    
+
 {% if error %}
     <div>{{ error.message }}</div>
 {% endif %}

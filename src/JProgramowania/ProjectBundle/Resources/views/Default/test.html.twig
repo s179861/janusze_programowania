@@ -1,3 +1,8 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/ie10-viewport-bug-workaround.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('carousel.css') }}"/>
+{% endblock %}
 {{ login_logout_message }}{{ form(login_logout_button) }}
 {% if zalogowany == 1 %}
 <a href="moje konto/moje rezerwacje">Moje rezerwacje</a>
@@ -16,4 +21,3 @@ Wartość 8: {{ values.value8 }}<br/>
 Wartość 9: {{ values.value9 }}<br/>
 Wartość 10: {{ values.value10 }}<br/>
 <br/>
-<body bgcolor="black" text="white">

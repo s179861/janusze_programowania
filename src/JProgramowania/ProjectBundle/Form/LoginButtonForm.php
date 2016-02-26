@@ -27,5 +27,3 @@ class LoginButtonForm extends AbstractType
 }
 
 ?>
-
-<body bgcolor="black" text="white">

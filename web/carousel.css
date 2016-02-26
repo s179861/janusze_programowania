@@ -4,7 +4,7 @@
 
 body {
   padding-bottom: 40px;
-  color: #FFFFFF;
+  color: #999;
   background-color: #000000;
 }
 
@@ -46,8 +46,12 @@ outline: 3px solid #e5f2f8;
 }
 
 
-.button{
+button{
   color: #000000;
+}
+
+input{
+  color: black;
 }
 
 
